@@ -3,7 +3,7 @@
  *  RandomWalk
  *
  *  Created by Nathan Koch on 8/27/12
- *  Copyright 2012 __MyCompanyName__. All rights reserved.
+ *  Copyright 2012 Dialect Partners. All rights reserved.
  *
  */
 
