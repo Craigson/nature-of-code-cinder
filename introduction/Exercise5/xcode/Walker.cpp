@@ -29,7 +29,7 @@ Walker::Walker(float x, float y) {
     radius = 2;
 }
 
-void Walker::update() {
+void Walker::update() {    
     float num = generatorStep.nextGaussian();
     float mean = 1.0;
     float stdDev = 3.0;
