@@ -21,7 +21,6 @@ class Exercise3App : public AppBasic {
 
 void Exercise3App::setup()
 {
-    w_ = WalkerRef(new Walker());
     gl::clear( Color( 0, 0, 0 ) );
 }
 
