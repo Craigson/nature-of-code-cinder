@@ -38,9 +38,9 @@ void Exercise8App::update()
             float brightness = lmap(noiseOutput, -1.0f, 1.0f, 0.0f, 255.0f);
             iter.v() = brightness;
             
-            yoff += 0.01;
+            yoff += 0.03;
         }
-        xoff += 0.01;
+        xoff += 0.07;
     }
     cloudsTex_.update(clouds_, getWindowBounds());
 }
