@@ -46,36 +46,45 @@ void Landscape::update( ) {
 }
 
 void Landscape::draw( ) {
-    gl::VboMesh mesh;
-    
-    gl::VboMesh::Layout layout;
-    layout.setStaticIndices();
-    layout.setStaticPositions();
-    layout.setStaticColorsRGBA();
-    
-    int zSize = rows*cols;
-    mesh = gl::VboMesh( zSize, zSize, layout, GL_QUADS );
-    
-    std::vector<uint32_t> indices;
-    int i = 0;
-    while(i < zSize) {
-        indices.push_back(i);
-        i++;
+    // Every cell is an individual quad
+    // (could use quad_strip here, but produces funny results, investigate this)
+    for( int x = 0; x < z.size() - 1; x++ )
+    {
+		for( int y = 0; y < z[x].size() - 1; y++ )
+		{
+			
+			// one quad at a time
+			// each quad's color is determined by the height value at each vertex
+			// (clean this part up)
+			
+			// There are more efficient ways to do this, but perhaps the easiest to explain
+			
+			glPushMatrix();
+			gl::translate( Vec3f( ( x * scl ) - ( w / 2 ), ( y * scl ) - ( h / 2 ), -160 ) );
+			
+			// draw the quad
+			gl::color( .6, .6, .6 );
+			gl::begin( GL_QUADS );
+			gl::vertex( 0, 0, z[x][y] );
+			gl::vertex( scl, 0, z[x+1][y] );
+			gl::vertex( scl, scl, z[x+1][y+1] );
+			gl::vertex( 0, scl, z[x][y+1] );
+			gl::end();
+			
+			// draw the outlines
+			gl::color( 0, 0, 0 );
+			gl::begin( GL_LINES );
+			gl::vertex( 0, 0, z[x][y] );				// side 1
+			gl::vertex( scl, 0, z[x+1][y] );
+			gl::vertex( scl, 0, z[x+1][y] );		// side 2
+			gl::vertex( scl, scl, z[x+1][y+1] );
+			gl::vertex( scl, scl, z[x+1][y+1] );	// side 3
+			gl::vertex( 0, scl, z[x][y+1] );
+			gl::vertex( 0, scl, z[x][y+1] );		// line 4
+			gl::vertex( 0, 0, z[x][y] );
+			gl::end();
+			
+			glPopMatrix();
+		}
     }
-    mesh.bufferIndices(indices);
-    
-    vector<Vec3f> positions;
-    for (int x = 0; x < z.size() - 1; x++) {
-        for (int y = 0; y < z[x].size() - 1; y++) {
-            positions.push_back( Vec3f(0, 0, z[x][y]) );
-            positions.push_back( Vec3f(0, 0, z[x+1][y]) );
-            positions.push_back( Vec3f(scl, scl, z[x+1][y+1]) );
-            positions.push_back( Vec3f(0, scl, z[x][y+1]) );
-        }
-    }
-    mesh.bufferPositions(positions);
-    
-    gl::color(0.5, 0.5, 0);
-    gl::translate(Vec3f(5.0f, 5.0f, 5.0f));
-    gl::draw(mesh);
 }
