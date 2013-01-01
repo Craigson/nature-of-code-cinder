@@ -23,7 +23,7 @@ class Exercise10App : public AppBasic {
 
 void Exercise10App::setup()
 {
-    mLand = LandscapeRef( new Landscape(12, getWindowWidth(), getWindowHeight()) );
+    mLand = LandscapeRef( new Landscape(12  , getWindowWidth(), getWindowHeight()) );
     mTheta = 0.0f;
 }
 
