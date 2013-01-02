@@ -17,11 +17,9 @@ using namespace ci;
 
 
 Mover::Mover( ) {
-    mLoc = Vec2f( randFloat(app::getWindowWidth()), randFloat(app::getWindowHeight()) );
-    mVel = randVec2f() * 2.0;
+    mLoc = Vec2f( Rand::randFloat(app::getWindowWidth()), Rand::randFloat(app::getWindowHeight()) );
+    mVel = Rand::randVec2f() * 2.0;
 }
-
-
 
 void Mover::update( ) {
 	mLoc += mVel;

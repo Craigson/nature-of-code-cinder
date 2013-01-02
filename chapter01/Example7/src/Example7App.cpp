@@ -1,5 +1,6 @@
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
+#include "cinder/Rand.h"
 #include "Mover.h"
 
 using namespace ci;
@@ -19,6 +20,7 @@ class Example7App : public AppBasic {
 
 void Example7App::setup()
 {
+    Rand::randomize();
     mMover = new Mover();
 }
 
