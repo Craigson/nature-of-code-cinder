@@ -30,7 +30,7 @@ void Example5App::setup()
     mNumMovers = 20;
     int i = 0;
     while (i < mNumMovers) {
-        mMovers.push_back(new Mover(randFloat(0.1, 5.0), randFloat(getWindowWidth()), randFloat(getWindowHeight())));
+        mMovers.push_back(new Mover(randFloat(1.0, 5.0), randFloat(getWindowWidth()), 10));
         i++;
     }
     liquid = new Liquid();
