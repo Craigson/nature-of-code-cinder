@@ -45,13 +45,6 @@ void Example5App::update()
         }
         
         mover->applyForce(wind);
-        
-        float c = 0.01;
-        Vec2f friction = mover->mVelocity;
-        friction *= -1;
-        friction.safeNormalize();
-        friction *= c;
-        mover->applyForce(friction);
 
         float m = (0.1 * mover->mMass);
         Vec2f gravity = Vec2f(0, m);

@@ -8,7 +8,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class Exercise5App : public AppBasic {
+class Exercise6App : public AppBasic {
   public:
 	void setup();
 	void update();
@@ -21,11 +21,11 @@ class Exercise5App : public AppBasic {
     Liquid *liquid;
 };
 
-void Exercise5App::prepareSettings(Settings *settings) {
+void Exercise6App::prepareSettings(Settings *settings) {
     settings->setFullScreen();
 }
 
-void Exercise5App::setup()
+void Exercise6App::setup()
 {
     mNumMovers = 20;
     int i = 0;
@@ -36,7 +36,7 @@ void Exercise5App::setup()
     liquid = new Liquid();
 }
 
-void Exercise5App::update()
+void Exercise6App::update()
 {
     Vec2f wind = Vec2f(0.05, 0);
     for (auto mover : mMovers) {
@@ -55,7 +55,7 @@ void Exercise5App::update()
     }
 }
 
-void Exercise5App::draw()
+void Exercise6App::draw()
 {
 	gl::clear( Color( 1, 1, 1 ) );
     liquid->draw();
@@ -64,4 +64,4 @@ void Exercise5App::draw()
     }
 }
 
-CINDER_APP_BASIC( Exercise5App, RendererGl )
+CINDER_APP_BASIC( Exercise6App, RendererGl )
