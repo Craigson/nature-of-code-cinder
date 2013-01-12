@@ -21,7 +21,7 @@ class Example6App : public AppBasic {
 };
 
 void Example6App::prepareSettings(Settings *settings) {
-    settings->setFullScreen();
+    settings->setWindowSize(640, 480);
 }
 
 void Example6App::setup()

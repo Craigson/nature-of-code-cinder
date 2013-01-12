@@ -29,8 +29,9 @@ void Example11App::setup()
 }
 
 void Example11App::prepareSettings(Settings *settings) {
-    settings->setFullScreen();
+    settings->setWindowSize(600, 400);
     settings->setFrameRate(60);
+    settings->setTitle("Chapter 1 Example 11");
 }
 
 void Example11App::mouseMove(MouseEvent event) {

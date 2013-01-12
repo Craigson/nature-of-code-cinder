@@ -21,7 +21,7 @@ class Exercise9App : public AppBasic {
 };
 
 void Exercise9App::prepareSettings(Settings *settings) {
-    settings->setFullScreen();
+    settings->setWindowSize(800, 600);
     settings->setFrameRate(60.0);
 }
 

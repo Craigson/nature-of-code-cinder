@@ -21,7 +21,7 @@ class Exercise10App : public AppBasic {
 };
 
 void Exercise10App::prepareSettings(Settings *settings) {
-    settings->setFullScreen();
+    settings->setWindowSize(800, 600);
 }
 
 void Exercise10App::mouseMove(MouseEvent event) {

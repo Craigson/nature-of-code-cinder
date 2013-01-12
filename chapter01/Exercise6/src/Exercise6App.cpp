@@ -28,7 +28,7 @@ void Exercise6App::setup()
 }
 
 void Exercise6App::prepareSettings(Settings *settings) {
-    settings->setWindowSize(640, 360);
+    settings->setWindowSize(500, 300);
 }
 
 void Exercise6App::mouseDown( MouseEvent event )
