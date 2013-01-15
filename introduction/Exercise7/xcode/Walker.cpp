@@ -19,7 +19,7 @@ Walker::Walker() {
     Vec2f center = app::getWindowCenter();
     x = center.x;
     y = center.y;
-    radius = 16;
+    radius = 24;
     tx = 0;
     ty = 10000;
 }
@@ -43,6 +43,6 @@ void Walker::step( ) {
 
 
 void Walker::draw( ) {
-    gl::color(255, 255, 255);
+    gl::color(0.2, 0.2, 0.2);
     gl::drawSolidCircle( Vec2f(x, y), radius);
 }

@@ -13,16 +13,24 @@ class Example5App : public AppBasic {
 	void setup();
 	void update();
 	void draw();
+    void keyDown(KeyEvent event);
     void prepareSettings(Settings *settings);
     
     vector<Mover*> mMovers;
     int mNumMovers;
     
     Liquid *liquid;
+    bool mActive = false;
 };
 
 void Example5App::prepareSettings(Settings *settings) {
-    settings->setFullScreen();
+    settings->setWindowSize(1024, 768);
+}
+
+void Example5App::keyDown(KeyEvent event) {
+    if (event.getCode() == event.KEY_SPACE) {
+        mActive = true;
+    }
 }
 
 void Example5App::setup()
@@ -38,21 +46,24 @@ void Example5App::setup()
 
 void Example5App::update()
 {
-    Vec2f wind = Vec2f(0.05, 0);
-    for (auto mover : mMovers) {
-        if (liquid->contains(mover->mLocation)) {
-            mover->drag(liquid);
+    if (mActive) {
+        Vec2f wind = Vec2f(0.05, 0);
+        for (auto mover : mMovers) {
+            if (liquid->contains(mover->mLocation)) {
+                mover->drag(liquid);
+            }
+            
+            mover->applyForce(wind);
+            
+            float m = (0.1 * mover->mMass);
+            Vec2f gravity = Vec2f(0, m);
+            mover->applyForce(gravity);
+            
+            mover->update();
+            mover->checkEdges();
         }
-        
-        mover->applyForce(wind);
-
-        float m = (0.1 * mover->mMass);
-        Vec2f gravity = Vec2f(0, m);
-        mover->applyForce(gravity);
-
-        mover->update();
-        mover->checkEdges();
     }
+
 }
 
 void Example5App::draw()

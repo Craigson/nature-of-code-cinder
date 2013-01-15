@@ -9,12 +9,17 @@ using namespace std;
 class Example1App : public AppBasic {
   public:
 	void setup();
+    void prepareSettings( Settings *settings);
 	void mouseDown( MouseEvent event );	
 	void update();
 	void draw();
     
     WalkerRef w_;
 };
+
+void Example1App::prepareSettings(Settings *settings) {
+    settings->setWindowSize(200, 200);
+}
 
 void Example1App::setup()
 {

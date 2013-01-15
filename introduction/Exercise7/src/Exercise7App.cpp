@@ -19,9 +19,10 @@ class Exercise7App : public AppBasic {
 
 void Exercise7App::setup()
 {
-    gl::clear( Color( 0, 0, 0 ) );
+    gl::clear( Color( 1, 1, 1 ) );
     gl::enableAlphaBlending();
     w = WalkerRef(new Walker());
+    setWindowSize(400, 400);
 }
 
 void Exercise7App::update()
@@ -31,7 +32,7 @@ void Exercise7App::update()
 
 void Exercise7App::draw()
 {
-    gl::color(0, 0, 0, 0.04);
+    gl::color(1, 1, 1, 0.04);
     gl::drawSolidRect(Rectf(Vec2f(0, 0), Vec2f(getWindowWidth(), getWindowHeight())));
     
     w->draw();

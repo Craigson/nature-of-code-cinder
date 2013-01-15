@@ -16,7 +16,7 @@ class Example4App : public AppBasic {
     
     Rand generator_;
     const float sd_ = 60;
-    const float mean_ = 320;
+    float mean_;
     float xPos_;
 };
 
@@ -26,6 +26,8 @@ void Example4App::setup()
     gl::enableAlphaBlending();
     
     generator_.seed(randInt());
+    app::setWindowSize(600, 200);
+    mean_ = getWindowWidth() / 2;
 }
 
 void Example4App::mouseDown( MouseEvent event )
@@ -40,8 +42,8 @@ void Example4App::update()
 
 void Example4App::draw()
 {
-    gl::color(0, 0, 0, 0.1);
-    gl::drawSolidEllipse( Vec2f(xPos_, 180), 16, 16);
+    gl::color(0, 0, 0, 0.08);
+    gl::drawSolidEllipse( Vec2f(xPos_, getWindowHeight() / 2), 16, 16);
     
 }
 
